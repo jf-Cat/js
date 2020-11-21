@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style type="text/css">
+			div{
+					width:200px;
+					height: 150px;
+					border:1px solid red;
+					position: relative;
+			}
+			img{
+				width:200px;
+				height:150px;
+				position: absolute;
+			}
+		</style>
+		<script type="text/javascript">
+			//准备一个加载完成事件
+			onload = function(){
+			//得到所有的图片
+			var imgs  = document.getElementsByTagName("img");
+			//验证图片的数量
+			//alert(imgs.length);
+			//遍历图片
+			for(var i=0;i<imgs.length;i++){
+					var img = imgs[i];
+					//修改图片的位置
+					img.style.top="0";
+					// 1	2		3
+					// 0	200		400
+					//i*200 1*200	2*200
+					//0*200	200		400
+					img.style.left=i*200+"px";
+				}
+			}
+			//开启图片移动的定时器
+			setInterval(function(){
+				//得到所有的图片
+				var imgs  = document.getElementsByTagName("img");
+				for(var i=0;i<imgs.length;i++){
+					//得到每一张图片
+					var img = imgs[i];
+					//移动图片
+					//得到原来的位置
+					var oldLeft = parseInt(img.style.left);
+					oldLeft-=2;//oldLeft = oldLeft-2;
+					//赋值回去
+					img.style.left = oldLeft+"px";
+				}
+				
+			},10);
+		</script>
+	</head>
+	<body>
+		<div>
+			<img src="../imgs/03.png"/>
+			<img src="../imgs/04.png"/>
+			<img src="../imgs/05.png"/>
+		</div>
+	</body>
+</html>
